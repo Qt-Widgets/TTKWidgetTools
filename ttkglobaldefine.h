@@ -3,7 +3,7 @@
 
 /* =================================================
  * This file is part of the TTK WidgetTools project
- * Copyright (C) 2015 - 2018 Greedysky Studio
+ * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,9 @@
 ///exoprt
 ///
 ///
-#define TTK_EXPORT
+#ifdef TTK_LIBRARY
+#  define TTK_EXPORT
+#endif
 
 #ifdef TTK_EXPORT
 #  define TTK_EXTRAS_EXPORT Q_DECL_EXPORT
