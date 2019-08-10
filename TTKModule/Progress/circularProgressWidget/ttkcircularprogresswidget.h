@@ -2,7 +2,7 @@
 #define TTKCIRCULARPROCESSWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
  ================================================= */
 
 #include <QProgressBar>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 class TTKCircularProgressWidget;
@@ -28,14 +29,14 @@ class TTKCircularProgressWidget;
  * @author Greedysky <greedysky@163.com>
  *   Heikki Johannes <hildenjohannes@gmail.com>
  */
-class TTK_EXTRAS_EXPORT TTKCircularProgressDelegate : public QObject
+class TTK_CORE_EXPORT TTKCircularProgressDelegate : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(qreal dashOffset WRITE setDashOffset READ dashOffset)
     Q_PROPERTY(qreal dashLength WRITE setDashLength READ dashLength)
     Q_PROPERTY(int angle WRITE setAngle READ angle)
 public:
-    explicit TTKCircularProgressDelegate(TTKCircularProgressWidget *parent = 0);
+    explicit TTKCircularProgressDelegate(TTKCircularProgressWidget *parent = nullptr);
 
     void setDashOffset(qreal offset);
     inline qreal dashOffset() const { return m_dashOffset; }
@@ -58,15 +59,16 @@ private:
  * @author Greedysky <greedysky@163.com>
  *   Heikki Johannes <hildenjohannes@gmail.com>
  */
-class TTK_EXTRAS_EXPORT TTKCircularProgressWidget : public QProgressBar
+class TTK_CORE_EXPORT TTKCircularProgressWidget : public QProgressBar
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKCircularProgressWidget)
     Q_PROPERTY(qreal lineWidth WRITE setLineWidth READ lineWidth)
     Q_PROPERTY(qreal size WRITE setSize READ size)
     Q_PROPERTY(QColor color WRITE setColor READ color)
 public:
     explicit TTKCircularProgressWidget(QWidget *parent = nullptr);
-    ~TTKCircularProgressWidget();
+    virtual ~TTKCircularProgressWidget();
 
     void setLineWidth(qreal width);
     qreal lineWidth() const;

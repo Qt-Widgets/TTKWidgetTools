@@ -1,5 +1,5 @@
 # =================================================
-# * This file is part of the TTK WidgetTools project
+# * This file is part of the TTK Widget Tools project
 # * Copyright (C) 2015 - 2019 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
@@ -22,3 +22,11 @@ include($$PWD/speedMeterWidget/SpeedMeterWidget.pri)
 include($$PWD/timeMeterWidget/TimeMeterWidget.pri)
 include($$PWD/paintMeterWidget/PaintMeterWidget.pri)
 include($$PWD/radarMeterWidget/RadarMeterWidget.pri)
+include($$PWD/carMeterWidget/CarMeterWidget.pri)
+include($$PWD/speedRingMeterWidget/SpeedRingMeterWidget.pri)
+include($$PWD/dialMeterWidget/DialMeterWidget.pri)
+include($$PWD/compassMeterWidget/CompassMeterWidget.pri)
+include($$PWD/progressMeterWidget/ProgressMeterWidget.pri)
+include($$PWD/percentMeterWidget/PercentMeterWidget.pri)
+include($$PWD/arcMeterWidget/ArcMeterWidget.pri)
+include($$PWD/panelMeterWidget/PanelMeterWidget.pri)

@@ -1,5 +1,5 @@
 # =================================================
-# * This file is part of the TTK WidgetTools project
+# * This file is part of the TTK Widget Tools project
 # * Copyright (C) 2015 - 2019 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,8 @@ UI_DIR = ./.build/ui
 MOC_DIR = ./.build/moc
 OBJECTS_DIR = ./.build/obj
 RCC_DIR = ./.build/rcc
+
+include(TTKVersion.pri)
 
 win32{
     equals(QT_MAJOR_VERSION, 5){
@@ -65,6 +67,7 @@ unix:!mac{
 DEFINES += TTK_LIBRARY
 
 #########################################
+HEADERS += $$PWD/ttkglobal.h
 HEADERS += $$PWD/ttkglobaldefine.h
 INCLUDEPATH += $$PWD
 #########################################

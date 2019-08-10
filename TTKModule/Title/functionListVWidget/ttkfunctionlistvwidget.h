@@ -2,7 +2,7 @@
 #define TTKFUNCTIONLISTVWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -24,12 +24,13 @@
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKFunctionListVWidget : public QWidget
+class TTK_CORE_EXPORT TTKFunctionListVWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKFunctionListVWidget)
 public:
     explicit TTKFunctionListVWidget(QWidget *parent = nullptr);
-    ~TTKFunctionListVWidget();
+    virtual ~TTKFunctionListVWidget();
 
     void resizeMode(bool mode);
 

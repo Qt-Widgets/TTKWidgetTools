@@ -2,7 +2,7 @@
 #define TTKMOVERESIZEWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -19,13 +19,14 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include <QWidget>
+#include <QLabel>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-struct TTK_EXTRAS_EXPORT MoveResizeStruct
+struct TTK_CORE_EXPORT MoveResizeStruct
 {
     bool m_mouseLeftPress;
     bool m_isPressBorder;
@@ -37,9 +38,10 @@ struct TTK_EXTRAS_EXPORT MoveResizeStruct
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKMoveResizeWidget : public QWidget
+class TTK_CORE_EXPORT TTKMoveResizeWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKMoveResizeWidget)
 public:
     enum Direction
     {
@@ -58,15 +60,12 @@ public:
 
 protected:
     virtual bool eventFilter(QObject *object, QEvent *event) override;
-    virtual void mouseDoubleClickEvent(QMouseEvent *event) override;
     virtual void mousePressEvent(QMouseEvent *event) override;
     virtual void mouseReleaseEvent(QMouseEvent *event) override;
     virtual void mouseMoveEvent(QMouseEvent *event) override;
 
     void sizeDirection();
     void moveDirection();
-
-    QObjectList foreachWidget(QObject *object);
 
     MoveResizeStruct m_struct;
     Direction m_direction;

@@ -2,7 +2,7 @@
 #define TTKPROCESSWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
  ================================================= */
 
 #include <QProgressBar>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 class TTKProgressWidget;
@@ -28,7 +29,7 @@ class TTKProgressWidget;
  * @author Greedysky <greedysky@163.com>
  *   Heikki Johannes <hildenjohannes@gmail.com>
  */
-class TTK_EXTRAS_EXPORT TTKProgressDelegate : public QObject
+class TTK_CORE_EXPORT TTKProgressDelegate : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(qreal offset WRITE setOffset READ offset)
@@ -49,14 +50,15 @@ private:
  * @author Greedysky <greedysky@163.com>
  *   Heikki Johannes <hildenjohannes@gmail.com>
  */
-class TTK_EXTRAS_EXPORT TTKProgressWidget : public QProgressBar
+class TTK_CORE_EXPORT TTKProgressWidget : public QProgressBar
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKProgressWidget)
     Q_PROPERTY(QColor progressColor WRITE setProgressColor READ progressColor)
     Q_PROPERTY(QColor backgroundColor WRITE setProgressColor READ backgroundColor)
 public:
     explicit TTKProgressWidget(QWidget *parent = nullptr);
-    ~TTKProgressWidget();
+    virtual ~TTKProgressWidget();
 
     void setProgressColor(const QColor &color);
     QColor progressColor() const;

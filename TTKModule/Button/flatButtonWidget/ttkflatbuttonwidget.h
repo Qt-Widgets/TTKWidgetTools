@@ -2,7 +2,7 @@
 #define TTKFLATBUTTONWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,15 +20,17 @@
  ================================================= */
 
 #include <QPushButton>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 /*!
  * @author Greedysky <greedysky@163.com>
  *   Heikki Johannes <hildenjohannes@gmail.com>
  */
-class TTK_EXTRAS_EXPORT TTKFlatButtonWidget : public QPushButton
+class TTK_CORE_EXPORT TTKFlatButtonWidget : public QPushButton
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKFlatButtonWidget)
 public:
     enum IconAlignment
     {
@@ -43,9 +45,6 @@ public:
 
     void setBackgroundColor(const QColor &color);
     inline QColor backgroundColor() const { return m_backgroundColor; }
-
-    void setFontSize(qreal size);
-    inline qreal fontSize() const { return m_fontSize; }
 
     void setIconAlignment(IconAlignment alignment);
     inline IconAlignment iconAlignment() const { return m_iconAlignment; }
@@ -64,7 +63,7 @@ protected:
     Qt::Alignment m_textAlignment;
     IconAlignment m_iconAlignment;
     QColor m_backgroundColor, m_foregroundColor;
-    qreal m_cornerRadius, m_fontSize;
+    qreal m_cornerRadius;
 
 };
 

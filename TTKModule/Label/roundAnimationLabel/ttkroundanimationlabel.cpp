@@ -19,6 +19,7 @@ TTKRoundAnimationLabel::~TTKRoundAnimationLabel()
 void TTKRoundAnimationLabel::setPixmap(const QPixmap &pix)
 {
     m_pixmap = pix;
+    update();
 }
 
 void TTKRoundAnimationLabel::setInterval(int value)
@@ -34,6 +35,11 @@ void TTKRoundAnimationLabel::start()
 void TTKRoundAnimationLabel::stop()
 {
     m_timer.stop();
+}
+
+QSize TTKRoundAnimationLabel::sizeHint() const
+{
+    return QSize(180, 180);
 }
 
 void TTKRoundAnimationLabel::paintEvent(QPaintEvent *event)

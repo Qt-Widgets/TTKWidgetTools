@@ -4,6 +4,7 @@
 #include <QCache>
 #include <QTimer>
 #include <QWidget>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 /*!
@@ -19,7 +20,7 @@ enum ReflectionEffect
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-struct TTK_EXTRAS_EXPORT TTKSlideInfo
+struct TTK_CORE_EXPORT TTKSlideInfo
 {
     int m_slideIndex;
     int m_angle;
@@ -32,11 +33,11 @@ struct TTK_EXTRAS_EXPORT TTKSlideInfo
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKTTKPictureFlowWidgetState
+class TTK_CORE_EXPORT TTKTTKPictureFlowWidgetState
 {
 public:
     TTKTTKPictureFlowWidgetState();
-    ~TTKTTKPictureFlowWidgetState();
+    virtual ~TTKTTKPictureFlowWidgetState();
 
     void reposition();
     void reset();
@@ -58,7 +59,7 @@ public:
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKTTKPictureFlowWidgetAnimator
+class TTK_CORE_EXPORT TTKTTKPictureFlowWidgetAnimator
 {
 public:
     TTKTTKPictureFlowWidgetAnimator();
@@ -77,11 +78,11 @@ public:
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKTTKPictureFlowWidgetSoftwareRenderer
+class TTK_CORE_EXPORT TTKTTKPictureFlowWidgetSoftwareRenderer
 {
 public:
     TTKTTKPictureFlowWidgetSoftwareRenderer();
-    ~TTKTTKPictureFlowWidgetSoftwareRenderer();
+    virtual ~TTKTTKPictureFlowWidgetSoftwareRenderer();
 
     void init();
     void paint();
@@ -111,19 +112,20 @@ private:
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKPictureFlowWidget : public QWidget
+class TTK_CORE_EXPORT TTKPictureFlowWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKPictureFlowWidget)
     Q_PROPERTY(QColor backgroundColor READ backgroundColor WRITE setBackgroundColor)
     Q_PROPERTY(QSize slideSize READ slideSize WRITE setSlideSize)
     Q_PROPERTY(int slideCount READ slideCount)
     Q_PROPERTY(int centerIndex READ centerIndex WRITE setCenterIndex)
 public:
     explicit TTKPictureFlowWidget(QWidget *parent = nullptr);
-    ~TTKPictureFlowWidget();
+    virtual ~TTKPictureFlowWidget();
 
     QColor backgroundColor() const;
-    void setBackgroundColor(const QColor& c);
+    void setBackgroundColor(const QColor &c);
 
     QSize slideSize() const;
     void setSlideSize(QSize size);
@@ -135,6 +137,8 @@ public:
 
     ReflectionEffect reflectionEffect() const;
     void setReflectionEffect(ReflectionEffect effect);
+
+    virtual QSize sizeHint() const override;
 
 Q_SIGNALS:
     void centerIndexChanged(int index);
@@ -151,7 +155,7 @@ public Q_SLOTS:
     void triggerRender();
 
 private Q_SLOTS:
-    void updateAnimation();
+    void updateRender();
 
 protected:
     virtual void paintEvent(QPaintEvent *event) override;

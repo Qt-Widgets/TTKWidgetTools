@@ -2,7 +2,7 @@
 #define TTKCHECKBUTTONWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,14 +20,16 @@
  ================================================= */
 
 #include "ttkcheckable.h"
+#include "ttkglobal.h"
 
 /*!
  * @author Greedysky <greedysky@163.com>
  *   Heikki Johannes <hildenjohannes@gmail.com>
  */
-class TTK_EXTRAS_EXPORT TTKCheckButtonWidget : public TTKCheckable
+class TTK_CORE_EXPORT TTKCheckButtonWidget : public TTKCheckable
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKCheckButtonWidget)
 public:
     explicit TTKCheckButtonWidget(QWidget *parent = nullptr);
 

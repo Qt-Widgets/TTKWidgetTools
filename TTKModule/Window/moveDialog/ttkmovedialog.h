@@ -2,7 +2,7 @@
 #define TTKMOVEDIALOG_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,14 +20,16 @@
  ================================================= */
 
 #include <QDialog>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKMoveDialog : public QDialog
+class TTK_CORE_EXPORT TTKMoveDialog : public QDialog
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKMoveDialog)
 public:
     explicit TTKMoveDialog(QWidget *parent = nullptr);
     explicit TTKMoveDialog(bool transparent, QWidget *parent = nullptr);

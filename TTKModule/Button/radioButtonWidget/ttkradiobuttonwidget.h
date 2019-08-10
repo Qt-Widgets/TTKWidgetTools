@@ -2,7 +2,7 @@
 #define TTKRADIOBUTTONWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,10 +20,12 @@
  ================================================= */
 
 #include "ttkcheckable.h"
+#include "ttkglobal.h"
 
-class TTK_EXTRAS_EXPORT TTKRadioButtonWidget : public TTKCheckable
+class TTK_CORE_EXPORT TTKRadioButtonWidget : public TTKCheckable
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKRadioButtonWidget)
 public:
     explicit TTKRadioButtonWidget(QWidget *parent = nullptr);
 

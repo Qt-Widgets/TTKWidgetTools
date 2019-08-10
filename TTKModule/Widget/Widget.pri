@@ -1,5 +1,5 @@
 # =================================================
-# * This file is part of the TTK WidgetTools project
+# * This file is part of the TTK Widget Tools project
 # * Copyright (C) 2015 - 2019 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
@@ -18,10 +18,13 @@
 
 INCLUDEPATH += $$PWD
 
-include($$PWD/colorTablePlane/ColorTablePlane.pri)
+include($$PWD/colorTableWidget/ColorTableWidget.pri)
 include($$PWD/layoutAnimationWidget/LayoutAnimationWidget.pri)
-include($$PWD/lineEditWidget/LineEditWidget.pri)
 include($$PWD/pictureBannerWidget/PictureBannerWidget.pri)
 include($$PWD/pictureFlowWidget/PictureFlowWidget.pri)
 include($$PWD/smoothMovingTableWidget/SmoothMovingTableWidget.pri)
-include($$PWD/stackedAnimationWidget/StackedAnimationWidget.pri)
+include($$PWD/animationStackedWidget/AnimationStackedWidget.pri)
+include($$PWD/animation2StackedWidget/Animation2StackedWidget.pri)
+include($$PWD/grabItemWidget/GrabItemWidget.pri)
+include($$PWD/customPieWidget/CustomPieWidget.pri)
+include($$PWD/customRingWidget/CustomRingWidget.pri)

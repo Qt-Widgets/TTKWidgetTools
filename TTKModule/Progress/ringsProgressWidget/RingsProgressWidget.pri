@@ -1,5 +1,5 @@
 # =================================================
-# * This file is part of the TTK WidgetTools project
+# * This file is part of the TTK Widget Tools project
 # * Copyright (C) 2015 - 2019 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
@@ -25,7 +25,5 @@ HEADERS += $$PWD/ttkringsprogresswidget.h
 
 contains(CONFIG, TTK_BUILD_LIB){
 SOURCES += $$PWD/ttkringsprogresswidget.cpp
-
-RESOURCES += $$PWD/RingsProgressWidget.qrc
 
 }

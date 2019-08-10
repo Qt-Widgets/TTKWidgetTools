@@ -2,7 +2,7 @@
 #define TTKANIMATIONPROGRESSWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
  ================================================= */
 
 #include <QWidget>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 class QPropertyAnimation;
@@ -27,13 +28,17 @@ class QPropertyAnimation;
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKAnimationProgressWidget : public QWidget
+class TTK_CORE_EXPORT TTKAnimationProgressWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKAnimationProgressWidget)
 public:
     explicit TTKAnimationProgressWidget(QWidget *parent = nullptr);
 
     void start();
+    void stop();
+
+    virtual QSize sizeHint() const override;
 
 protected:
     virtual void paintEvent(QPaintEvent *event) override;
@@ -43,7 +48,7 @@ private Q_SLOTS:
 
 private:
     int m_index;
-    int m_persent;
+    int m_value;
     QList<QPixmap> m_ranges;
     QPropertyAnimation *m_animation;
 

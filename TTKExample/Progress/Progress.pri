@@ -1,5 +1,5 @@
 # =================================================
-# * This file is part of the TTK WidgetTools project
+# * This file is part of the TTK Widget Tools project
 # * Copyright (C) 2015 - 2019 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
@@ -20,9 +20,12 @@ INCLUDEPATH += $$PWD
 
 include($$PWD/animationProgressWidget/AnimationProgressWidget.pri)
 include($$PWD/circularProgressWidget/CircularProgressWidget.pri)
-include($$PWD/gifLabelWidget/GifLabelWidget.pri)
-include($$PWD/progressCircleWidget/ProgressCircleWidget.pri)
+include($$PWD/gifProgressWidget/GifProgressWidget.pri)
+include($$PWD/circleProgressWidget/CircleProgressWidget.pri)
 include($$PWD/progressWidget/ProgressWidget.pri)
 include($$PWD/radiusProgressWidget/RadiusProgressWidget.pri)
 include($$PWD/ringsMapProgressWidget/RingsMapProgressWidget.pri)
+include($$PWD/ringProgressWidget/RingProgressWidget.pri)
 include($$PWD/ringsProgressWidget/RingsProgressWidget.pri)
+include($$PWD/roundProgressWidget/RoundProgressWidget.pri)
+include($$PWD/loadingProgressWidget/LoadingProgressWidget.pri)

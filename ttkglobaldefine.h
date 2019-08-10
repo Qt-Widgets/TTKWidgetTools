@@ -2,7 +2,7 @@
 #define TTKGLOBALDEFINE_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -21,18 +21,17 @@
 
 #include <QObject>
 
-//////////////////////////////////////
-///exoprt
-///
 ///
 #ifdef TTK_LIBRARY
 #  define TTK_EXPORT
 #endif
 
+#define TTK_BUILD_EXAMPLE
+
 #ifdef TTK_EXPORT
-#  define TTK_EXTRAS_EXPORT Q_DECL_EXPORT
+#  define TTK_CORE_EXPORT Q_DECL_EXPORT
 #else
-#  define TTK_EXTRAS_IMPORT Q_DECL_IMPORT
+#  define TTK_CORE_IMPORT Q_DECL_IMPORT
 #endif
 
 #endif // TTKGLOBALDEFINE_H

@@ -1,5 +1,5 @@
 # =================================================
-# * This file is part of the TTK WidgetTools project
+# * This file is part of the TTK Widget Tools project
 # * Copyright (C) 2015 - 2019 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
@@ -18,9 +18,11 @@
 
 include($$PWD/Button/Button.pri)
 include($$PWD/Label/Label.pri)
+include($$PWD/LineEdit/LineEdit.pri)
 include($$PWD/Meter/Meter.pri)
 include($$PWD/Progress/Progress.pri)
 include($$PWD/Slider/Slider.pri)
 include($$PWD/Title/Title.pri)
 include($$PWD/Widget/Widget.pri)
 include($$PWD/Window/Window.pri)
+include($$PWD/../TTKThirdParty/TTKThirdParty.pri)

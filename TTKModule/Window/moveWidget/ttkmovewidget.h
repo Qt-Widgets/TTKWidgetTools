@@ -2,7 +2,7 @@
 #define TTKMOVEWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -21,14 +21,16 @@
 
 #include <QLabel>
 #include <QMouseEvent>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKMoveWidget : public QWidget
+class TTK_CORE_EXPORT TTKMoveWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKMoveWidget)
 public:
     explicit TTKMoveWidget(QWidget *parent = nullptr);
     explicit TTKMoveWidget(bool transparent, QWidget *parent = nullptr);

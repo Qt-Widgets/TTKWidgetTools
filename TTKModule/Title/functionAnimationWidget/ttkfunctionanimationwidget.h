@@ -2,7 +2,7 @@
 #define TTKFUNCTIONANIMATIONWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
  ================================================= */
 
 #include <QWidget>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 class QButtonGroup;
@@ -28,9 +29,10 @@ class QPropertyAnimation;
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKBaseAnimationWidget : public QWidget
+class TTK_CORE_EXPORT TTKBaseAnimationWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKBaseAnimationWidget)
 public:
     enum Alignment
     {
@@ -40,7 +42,7 @@ public:
         Right
     };
     explicit TTKBaseAnimationWidget(QWidget *parent = nullptr);
-    ~TTKBaseAnimationWidget();
+    virtual ~TTKBaseAnimationWidget();
 
     void setAlignment(Alignment alignment);
 
@@ -70,11 +72,14 @@ protected:
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKBaseAnimationHWidget : public TTKBaseAnimationWidget
+class TTK_CORE_EXPORT TTKBaseAnimationHWidget : public TTKBaseAnimationWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKBaseAnimationHWidget)
 public:
     explicit TTKBaseAnimationHWidget(QWidget *parent = nullptr);
+
+    virtual QSize sizeHint() const override;
 
 protected:
     virtual void paintEvent(QPaintEvent *event) override;
@@ -85,9 +90,10 @@ protected:
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKOptionAnimationHWidget : public TTKBaseAnimationHWidget
+class TTK_CORE_EXPORT TTKOptionAnimationHWidget : public TTKBaseAnimationHWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKOptionAnimationHWidget)
 public:
     explicit TTKOptionAnimationHWidget(QWidget *parent = nullptr);
 
@@ -97,9 +103,10 @@ public:
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKTableAnimationHWidget : public TTKBaseAnimationHWidget
+class TTK_CORE_EXPORT TTKTableAnimationHWidget : public TTKBaseAnimationHWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKTableAnimationHWidget)
 public:
     explicit TTKTableAnimationHWidget(QWidget *parent = nullptr);
 
@@ -112,9 +119,10 @@ protected:
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKSkinAnimationHWidget : public TTKBaseAnimationHWidget
+class TTK_CORE_EXPORT TTKSkinAnimationHWidget : public TTKBaseAnimationHWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKSkinAnimationHWidget)
 public:
     explicit TTKSkinAnimationHWidget(QWidget *parent = nullptr);
 
@@ -126,11 +134,14 @@ public:
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKBaseAnimationVWidget : public TTKBaseAnimationWidget
+class TTK_CORE_EXPORT TTKBaseAnimationVWidget : public TTKBaseAnimationWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKBaseAnimationVWidget)
 public:
     explicit TTKBaseAnimationVWidget(QWidget *parent = nullptr);
+
+    virtual QSize sizeHint() const override;
 
 protected:
     virtual void paintEvent(QPaintEvent *event) override;
@@ -141,9 +152,10 @@ protected:
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKOptionAnimationVWidget : public TTKBaseAnimationVWidget
+class TTK_CORE_EXPORT TTKOptionAnimationVWidget : public TTKBaseAnimationVWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKOptionAnimationVWidget)
 public:
     explicit TTKOptionAnimationVWidget(QWidget *parent = nullptr);
 
@@ -153,9 +165,10 @@ public:
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKTableAnimationVWidget : public TTKBaseAnimationVWidget
+class TTK_CORE_EXPORT TTKTableAnimationVWidget : public TTKBaseAnimationVWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKTableAnimationVWidget)
 public:
     explicit TTKTableAnimationVWidget(QWidget *parent = nullptr);
 
@@ -168,9 +181,10 @@ protected:
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKSkinAnimationVWidget : public TTKBaseAnimationVWidget
+class TTK_CORE_EXPORT TTKSkinAnimationVWidget : public TTKBaseAnimationVWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKSkinAnimationVWidget)
 public:
     explicit TTKSkinAnimationVWidget(QWidget *parent = nullptr);
 

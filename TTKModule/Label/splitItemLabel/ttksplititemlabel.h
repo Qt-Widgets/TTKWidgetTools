@@ -2,7 +2,7 @@
 #define TTKSPLITITEMLABEL_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,16 +20,20 @@
  ================================================= */
 
 #include <QLabel>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 /*!
 * @author Greedysky <greedysky@163.com>
 */
-class TTK_EXTRAS_EXPORT TTKSplitItemLabel : public QLabel
+class TTK_CORE_EXPORT TTKSplitItemLabel : public QLabel
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKSplitItemLabel)
 public:
     explicit TTKSplitItemLabel(QWidget *parent = nullptr);
+
+    void setSplitString(const QString &str);
 
 Q_SIGNALS:
     void changed(const QString &value);
@@ -42,7 +46,7 @@ private:
     virtual void paintEvent(QPaintEvent *event) override;
 
     QRectF m_lineGeometry;
-    QString m_currentString;
+    QString m_splitString, m_currentString;
 
 };
 

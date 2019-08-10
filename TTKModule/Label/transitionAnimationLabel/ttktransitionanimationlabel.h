@@ -2,7 +2,7 @@
 #define TTKTRANSITIONANIMATIONLABEL_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
  ================================================= */
 
 #include <QLabel>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 class QPropertyAnimation;
@@ -27,20 +28,23 @@ class QPropertyAnimation;
 /*!
 * @author Greedysky <greedysky@163.com>
 */
-class TTK_EXTRAS_EXPORT TTKTransitionAnimationLabel : public QLabel
+class TTK_CORE_EXPORT TTKTransitionAnimationLabel : public QLabel
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKTransitionAnimationLabel)
 public:
     explicit TTKTransitionAnimationLabel(QWidget *parent = nullptr);
-
-    ~TTKTransitionAnimationLabel();
+    virtual ~TTKTransitionAnimationLabel();
 
     inline void setNoAnimation(bool on) { m_noAnimationSet = on; }
     inline bool getNoAnimation() const { return m_noAnimationSet; }
 
     QPixmap getRendererPixmap() const;
 
+    void start();
     void stop();
+
+    virtual QSize sizeHint() const override;
 
 public Q_SLOTS:
     void setPixmap(const QPixmap &pix);

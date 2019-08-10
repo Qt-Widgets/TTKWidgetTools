@@ -28,11 +28,13 @@ void TTKSpeedMeterWidget::setValue(qreal value)
         m_currentValue = m_value;
     }
     m_updateTimer->start();
+    update();
 }
 
 void TTKSpeedMeterWidget::setRatio(qreal value)
 {
     m_ratio = value;
+    update();
 }
 
 void TTKSpeedMeterWidget::setAnimating(bool enable)
@@ -41,7 +43,12 @@ void TTKSpeedMeterWidget::setAnimating(bool enable)
     update();
 }
 
-void TTKSpeedMeterWidget::updateGraph()
+QSize TTKSpeedMeterWidget::sizeHint() const
+{
+    return QSize(180, 180);
+}
+
+void TTKSpeedMeterWidget::updateRender()
 {
     if(m_bReverse)
     {
@@ -79,16 +86,6 @@ void TTKSpeedMeterWidget::paintEvent(QPaintEvent *event)
     painter.end();
 }
 
-QSize TTKSpeedMeterWidget::sizeHint() const
-{
-    return QSize(300, 300);
-}
-
-QSize TTKSpeedMeterWidget::minimumSizeHint() const
-{
-    return QSize(200, 200);
-}
-
 void TTKSpeedMeterWidget::initVariables()
 {
     resetVariables();
@@ -100,7 +97,7 @@ void TTKSpeedMeterWidget::initVariables()
 
     m_updateTimer = new QTimer(this);
     m_updateTimer->setInterval(10);
-    connect(m_updateTimer, SIGNAL(timeout()), SLOT(updateGraph()));
+    connect(m_updateTimer, SIGNAL(timeout()), SLOT(updateRender()));
     m_singleTimer = new QTimer(this);
     m_singleTimer->setInterval(100);
     connect(m_singleTimer, SIGNAL(timeout()), SLOT(update()));

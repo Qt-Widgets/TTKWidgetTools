@@ -1,5 +1,5 @@
 # =================================================
-# * This file is part of the TTK WidgetTools project
+# * This file is part of the TTK Widget Tools project
 # * Copyright (C) 2015 - 2019 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
@@ -19,11 +19,11 @@
 INCLUDEPATH += $$PWD
 
 !contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
-HEADERS += $$PWD/ttkshiningsliderwidget.h
+HEADERS += $$PWD/ttkshiningslider.h
 
 }
 
 contains(CONFIG, TTK_BUILD_LIB){
-SOURCES += $$PWD/ttkshiningsliderwidget.cpp
+SOURCES += $$PWD/ttkshiningslider.cpp
 
 }

@@ -65,14 +65,14 @@ void TTKPictureBannerArrowWidget::paintEvent(QPaintEvent *event)
     {
         case Right:
         {
-            painter.drawLine(QPointF(margin, margin), QPointF(this->width()-margin, this->height()/2));
-            painter.drawLine(QPointF(margin, this->height()-margin), QPointF(this->width()-margin, this->height()/2));
+            painter.drawLine(QPointF(margin, margin), QPointF(width()-margin, height()/2));
+            painter.drawLine(QPointF(margin, height()-margin), QPointF(width()-margin, height()/2));
             break;
         }
         case Left:
         {
-            painter.drawLine(QPointF(this->width()-margin, margin), QPointF(margin, this->height()/2));
-            painter.drawLine(QPointF(this->width()-margin, this->height()-margin), QPointF(margin, this->height()/2));
+            painter.drawLine(QPointF(width()-margin, margin), QPointF(margin, height()/2));
+            painter.drawLine(QPointF(width()-margin, height()-margin), QPointF(margin, height()/2));
             break;
         }
         default: break;
@@ -402,6 +402,11 @@ void TTKPictureBannerWidget::setDelayTime(int msec, bool start)
     }
 }
 
+QSize TTKPictureBannerWidget::sizeHint() const
+{
+    return QSize(600, 180);
+}
+
 void TTKPictureBannerWidget::switchIndicator()
 {
     TTKPictureBannerIndicator *ind = qobject_cast<TTKPictureBannerIndicator*>(sender());
@@ -474,7 +479,7 @@ void TTKPictureBannerWidget::switchPage(int flag)
     m_view->startAnimation(flag);
 }
 
-void TTKPictureBannerWidget::slotTimeOut()
+void TTKPictureBannerWidget::updateRender()
 {
     switchPage(1);
 }
@@ -492,7 +497,7 @@ void TTKPictureBannerWidget::init()
     connect(m_view, SIGNAL(clicked(int)), this, SLOT(switchPage(int)));
 
     m_timer = new QTimer(this);
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(slotTimeOut()));
+    connect(m_timer, SIGNAL(timeout()), SLOT(updateRender()));
 
     QHBoxLayout *bottomLayout = new QHBoxLayout();
     bottomLayout->setSpacing(0);

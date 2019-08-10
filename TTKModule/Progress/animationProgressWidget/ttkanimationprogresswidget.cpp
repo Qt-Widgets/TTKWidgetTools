@@ -8,7 +8,7 @@
 TTKAnimationProgressWidget::TTKAnimationProgressWidget(QWidget *parent)
     : QWidget(parent),
     m_index(0),
-    m_persent(0)
+    m_value(0)
 {
     QPixmap pix(":/res/lb_animate");
 
@@ -27,8 +27,19 @@ TTKAnimationProgressWidget::TTKAnimationProgressWidget(QWidget *parent)
 
 void TTKAnimationProgressWidget::start()
 {
-    update();
     m_animation->start();
+    update();
+}
+
+void TTKAnimationProgressWidget::stop()
+{
+    m_animation->stop();
+    update();
+}
+
+QSize TTKAnimationProgressWidget::sizeHint() const
+{
+    return QSize(180, 180);
 }
 
 void TTKAnimationProgressWidget::paintEvent(QPaintEvent *event)
@@ -41,15 +52,15 @@ void TTKAnimationProgressWidget::paintEvent(QPaintEvent *event)
     const int side = qMin(width(), height());
     painter.drawPixmap(QRect(0, 0, side, side), m_ranges.at(m_index));
 
-    painter.setFont(QFont("Microsoft YaHei", 15, QFont::Bold));
+    painter.setFont(QFont("Roboto", 15, QFont::Bold));
     painter.setPen(QColor("#555555"));
-    painter.drawText(QRect(20, 20, side - 40, side - 40), Qt::AlignCenter, QString("%1%").arg(QString::number(m_persent)));
+    painter.drawText(QRect(20, 20, side - 40, side - 40), Qt::AlignCenter, QString("%1%").arg(m_value));
 }
 
 void TTKAnimationProgressWidget::valueChanged(const QVariant &value)
 {
     m_index = value.toInt();
-    m_persent = m_index*100 / MAX_SIZE;
+    m_value = m_index*100 / MAX_SIZE;
 
     update();
 }

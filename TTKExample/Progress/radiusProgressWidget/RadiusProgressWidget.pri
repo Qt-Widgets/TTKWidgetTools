@@ -1,5 +1,5 @@
 # =================================================
-# * This file is part of the TTK WidgetTools project
+# * This file is part of the TTK Widget Tools project
 # * Copyright (C) 2015 - 2019 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,6 @@
 
 INCLUDEPATH += $$PWD
 
-HEADERS += $$PWD/ttkradiusprogresswindow.h
+HEADERS += $$PWD/ttkradiusprogresswidgetproperty.h
 
-SOURCES += $$PWD/ttkradiusprogresswindow.cpp
-
-FORMS   += $$PWD/ttkradiusprogresswindow.ui
+SOURCES += $$PWD/ttkradiusprogresswidgetproperty.cpp

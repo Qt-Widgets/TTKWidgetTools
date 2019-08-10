@@ -2,7 +2,7 @@
 #define TTKLAYOUTANIMATIONWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
  ================================================= */
 
 #include <QWidget>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 class QVBoxLayout;
@@ -28,12 +29,13 @@ class QPropertyAnimation;
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKLayoutAnimationWidget : public QWidget
+class TTK_CORE_EXPORT TTKLayoutAnimationWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKLayoutAnimationWidget)
 public:
     explicit TTKLayoutAnimationWidget(QWidget *parent = nullptr);
-    ~TTKLayoutAnimationWidget();
+    virtual ~TTKLayoutAnimationWidget();
 
     void start();
     void stop();
@@ -41,6 +43,8 @@ public:
     void addStretch(int stretch = 0);
     void addWidget(QWidget *widget, int stretch = 0, Qt::Alignment alignment = 0);
     void removeWidget(QWidget *widget);
+
+    virtual QSize sizeHint() const override;
 
 private Q_SLOTS:
     void valueChanged(const QVariant &value);

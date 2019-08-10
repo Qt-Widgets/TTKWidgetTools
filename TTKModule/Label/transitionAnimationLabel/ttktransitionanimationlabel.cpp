@@ -29,6 +29,13 @@ QPixmap TTKTransitionAnimationLabel::getRendererPixmap() const
     return m_rendererPixmap;
 }
 
+void TTKTransitionAnimationLabel::start()
+{
+    stop();
+    m_isAnimating = true;
+    m_animation->start();
+}
+
 void TTKTransitionAnimationLabel::stop()
 {
     if(m_animation->state() == QPropertyAnimation::Running)
@@ -37,19 +44,24 @@ void TTKTransitionAnimationLabel::stop()
     }
 }
 
+QSize TTKTransitionAnimationLabel::sizeHint() const
+{
+    return QSize(180, 180);
+}
+
 void TTKTransitionAnimationLabel::setPixmap(const QPixmap &pix)
 {
     if(m_noAnimationSet || !pixmap())
     {
-        m_rendererPixmap = pix;
-        QLabel::setPixmap(pix);
+        m_rendererPixmap = pix.scaled(sizeHint());
+        QLabel::setPixmap(m_rendererPixmap);
         return;
     }
 
     m_previousPixmap = *pixmap();
-    m_currentPixmap = pix;
-    m_isAnimating = true;
-    m_animation->start();
+    m_currentPixmap = pix.scaled(sizeHint());
+
+    start();
 }
 
 void TTKTransitionAnimationLabel::valueChanged(const QVariant &value)

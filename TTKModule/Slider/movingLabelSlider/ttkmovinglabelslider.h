@@ -2,7 +2,7 @@
 #define TTKMOVINGLABELSLIDER_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,18 +20,20 @@
  ================================================= */
 
 #include <QLabel>
+#include "ttkglobal.h"
 #include "ttkclickedslider.h"
 
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKMovingLabelSlider : public TTKClickedSlider
+class TTK_CORE_EXPORT TTKMovingLabelSlider : public TTKClickedSlider
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKMovingLabelSlider)
 public:
     explicit TTKMovingLabelSlider(QWidget *parent = nullptr);
     explicit TTKMovingLabelSlider(Qt::Orientation orientation, QWidget *parent = nullptr);
-    ~TTKMovingLabelSlider();
+    virtual ~TTKMovingLabelSlider();
 
     inline bool isMoving() const { return m_isMoving;}
 
@@ -54,7 +56,6 @@ protected:
 
     bool m_isMoving;
     QLabel *m_textLabel;
-    Qt::Orientation m_orientation;
 
 };
 

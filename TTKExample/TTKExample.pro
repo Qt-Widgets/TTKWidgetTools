@@ -1,5 +1,5 @@
 # =================================================
-# * This file is part of the TTK WidgetTools project
+# * This file is part of the TTK Widget Tools project
 # * Copyright (C) 2015 - 2019 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
@@ -30,6 +30,7 @@ win32{
 }
 include(TTKExample.pri)
 include(../TTKWidgetTools.pri)
+include(../TTKQrc/TTKQrc.pri)
 
 win32{
     TARGET = ../../bin/TTKWidgetTools
@@ -40,13 +41,30 @@ unix{
     LIBS += -L../lib -lTTKCore
 }
 
+INCLUDEPATH += $$PWD
+
 SOURCES += \
-    $$PWD/mainwindow.cpp \
+    $$PWD/ttkwidgetproperty.cpp \
+    $$PWD/ttkpropertycontainwidget.cpp \
+    $$PWD/ttkfunctionitem.cpp \
+    $$PWD/ttkbackgroundcontainer.cpp \
+    $$PWD/ttkbackgroundwidget.cpp \
+    $$PWD/ttktoolsapplication.cpp \
     main.cpp
 
 HEADERS += \
-    $$PWD/mainwindow.h \
+    $$PWD/ttkwidgetproperty.h \
+    $$PWD/ttkpropertycontainwidget.h \
+    $$PWD/ttkfunctionitem.h \
+    $$PWD/ttkbackgroundcontainer.h \
+    $$PWD/ttkbackgroundwidget.h \
+    $$PWD/ttktoolsapplication.h \
     ../ttkglobaldefine.h
 
-FORMS   += $$PWD/mainwindow.ui
+FORMS   += $$PWD/ttktoolsapplication.ui
 
+RESOURCES += $$PWD/TTKExample.qrc
+
+win32{
+    RC_FILE = TTKExample.rc
+}

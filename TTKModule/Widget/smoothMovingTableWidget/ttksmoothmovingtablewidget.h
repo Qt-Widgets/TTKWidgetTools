@@ -2,7 +2,7 @@
 #define TTKSMOOTHMOVINGTABLEWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
  ================================================= */
 
 #include <QTableWidget>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 class QPropertyAnimation;
@@ -27,17 +28,20 @@ class QPropertyAnimation;
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKSmoothMovingTableWidget : public QTableWidget
+class TTK_CORE_EXPORT TTKSmoothMovingTableWidget : public QTableWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKSmoothMovingTableWidget)
 public:
     explicit TTKSmoothMovingTableWidget(QWidget *parent = nullptr);
-    ~TTKSmoothMovingTableWidget();
+    virtual ~TTKSmoothMovingTableWidget();
 
     void setMovedScrollBar(QScrollBar *bar);
 
+    virtual QSize sizeHint() const override;
+
 public Q_SLOTS:
-    void timeToAnimation();
+    void updateRender();
     void valueChanged(int value);
 
 protected:

@@ -8,11 +8,14 @@ TTKToastLabel::TTKToastLabel(QWidget *parent)
 {
     setWindowFlags( Qt::Window | Qt::FramelessWindowHint );
     setAttribute(Qt::WA_TranslucentBackground);
+
+#ifndef TTK_BUILD_EXAMPLE
     setAttribute(Qt::WA_QuitOnClose);
     setAttribute(Qt::WA_DeleteOnClose);
+#endif
 
     m_font = font();
-    connect(&m_timer, SIGNAL(timeout()), SLOT(closeAnimation()));
+    connect(&m_timer, SIGNAL(timeout()), SLOT(updateRender()));
     m_timer.setInterval(1500);
     m_timer.start();
 }
@@ -32,6 +35,7 @@ void TTKToastLabel::setFontMargin(int height, int width)
 {
     m_margin.setX(height);
     m_margin.setY(width);
+    update();
 }
 
 void TTKToastLabel::setTimerInterval(int msecond)
@@ -50,6 +54,7 @@ void TTKToastLabel::setFontSize(int size)
 {
     m_font.setPointSize(size);
     setFont(m_font);
+    update();
 }
 
 int TTKToastLabel::getFontSize() const
@@ -61,6 +66,7 @@ void TTKToastLabel::setBold(bool bold)
 {
     m_font.setBold(bold);
     setFont(m_font);
+    update();
 }
 
 bool TTKToastLabel::bold() const
@@ -73,6 +79,7 @@ void TTKToastLabel::popup(QWidget *parent)
     QPoint globalPoint = parent->mapToGlobal(QPoint(0, 0));
     move( globalPoint.x() + (parent->width() - width())/2,
           globalPoint.y() + (parent->height() - height())/2);
+    raise();
     show();
 
     QPropertyAnimation *animation = new QPropertyAnimation(this, "windowOpacity", this);
@@ -89,7 +96,7 @@ void TTKToastLabel::setText(const QString &text)
     QLabel::setText(text);
 }
 
-void TTKToastLabel::closeAnimation()
+void TTKToastLabel::updateRender()
 {
     m_timer.stop();
     QPropertyAnimation *animation = new QPropertyAnimation(this, "windowOpacity", this);

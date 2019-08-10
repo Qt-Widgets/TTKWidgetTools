@@ -762,7 +762,7 @@ TTKPictureFlowWidget::TTKPictureFlowWidget(QWidget* parent)
 
     m_useResize = false;
 
-    connect(&m_animator->m_animateTimer, SIGNAL(timeout()), SLOT(updateAnimation()));
+    connect(&m_animator->m_animateTimer, SIGNAL(timeout()), SLOT(updateRender()));
     connect(&m_triggerTimer, SIGNAL(timeout()), SLOT(render()));
 }
 
@@ -783,7 +783,7 @@ QColor TTKPictureFlowWidget::backgroundColor() const
     return QColor(m_state->m_backgroundColor);
 }
 
-void TTKPictureFlowWidget::setBackgroundColor(const QColor& c)
+void TTKPictureFlowWidget::setBackgroundColor(const QColor &c)
 {
     m_state->m_backgroundColor = c.rgb();
     triggerRender();
@@ -813,9 +813,14 @@ void TTKPictureFlowWidget::setReflectionEffect(ReflectionEffect effect)
     triggerRender();
 }
 
+QSize TTKPictureFlowWidget::sizeHint() const
+{
+    return QSize(400, 180);
+}
+
 QImage TTKPictureFlowWidget::slide(int index) const
 {
-    QImage *img = 0;
+    QImage *img = nullptr;
     if(index >= 0 && index < slideCount())
     {
         img = m_state->m_slideImages[index];
@@ -836,7 +841,7 @@ void TTKPictureFlowWidget::setSlide(int index, const QImage &image)
 {
     if(index >= 0 && index < slideCount())
     {
-        QImage *img = image.isNull() ? 0 : new QImage(image);
+        QImage *img = image.isNull() ? nullptr : new QImage(image);
         delete m_state->m_slideImages[index];
         m_state->m_slideImages[index] = img;
         triggerRender();
@@ -995,7 +1000,7 @@ void TTKPictureFlowWidget::resizeEvent(QResizeEvent *event)
     }
 }
 
-void TTKPictureFlowWidget::updateAnimation()
+void TTKPictureFlowWidget::updateRender()
 {
     int center = m_state->m_centerIndex;
     m_animator->update();

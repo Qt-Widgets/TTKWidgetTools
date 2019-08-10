@@ -2,7 +2,7 @@
 #define TTKPICTUREBANNERWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
  ================================================= */
 
 #include <QLabel>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 class QHBoxLayout;
@@ -29,7 +30,7 @@ class QPropertyAnimation;
  * @author Greedysky <greedysky@163.com>
  *          maminjie <canpool@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKPictureBannerArrowWidget : public QWidget
+class TTK_CORE_EXPORT TTKPictureBannerArrowWidget : public QWidget
 {
     Q_OBJECT
 public:
@@ -62,7 +63,7 @@ private:
  * @author Greedysky <greedysky@163.com>
  *          maminjie <canpool@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKPictureBannerIndicator : public QWidget
+class TTK_CORE_EXPORT TTKPictureBannerIndicator : public QWidget
 {
     Q_OBJECT
 public:
@@ -88,7 +89,7 @@ private:
  * @author Greedysky <greedysky@163.com>
  *          maminjie <canpool@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKPictureBannerPage : public QLabel
+class TTK_CORE_EXPORT TTKPictureBannerPage : public QLabel
 {
     Q_OBJECT
 public:
@@ -114,12 +115,12 @@ private:
  * @author Greedysky <greedysky@163.com>
  *          maminjie <canpool@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKPictureBannerView : public QWidget
+class TTK_CORE_EXPORT TTKPictureBannerView : public QWidget
 {
     Q_OBJECT
 public:
     explicit TTKPictureBannerView(QWidget *parent = nullptr);
-    ~TTKPictureBannerView();
+    virtual ~TTKPictureBannerView();
 
     void setLeftPixmap(const QPixmap &pixmap);
     void setCenterPixmap(const QPixmap &pixmap);
@@ -155,9 +156,10 @@ protected:
  * @author Greedysky <greedysky@163.com>
  *          maminjie <canpool@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKPictureBannerWidget : public QWidget
+class TTK_CORE_EXPORT TTKPictureBannerWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKPictureBannerWidget)
 public:
     explicit TTKPictureBannerWidget(QWidget *parent = nullptr);
 
@@ -169,13 +171,15 @@ public:
 
     void setDelayTime(int msec, bool start = false);
 
+    virtual QSize sizeHint() const override;
+
 Q_SIGNALS:
     void currentClicked(int index);
 
 public Q_SLOTS:
     void switchIndicator();
     void switchPage(int flag);
-    void slotTimeOut();
+    void updateRender();
 
 protected:
     virtual void paintEvent(QPaintEvent *event) override;

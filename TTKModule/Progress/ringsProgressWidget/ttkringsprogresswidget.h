@@ -2,7 +2,7 @@
 #define TTKRINGSPROGRESSWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,18 +20,22 @@
  ================================================= */
 
 #include <QWidget>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKRingsProgressWidget : public QWidget
+class TTK_CORE_EXPORT TTKRingsProgressWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKRingsProgressWidget)
 public:
     explicit TTKRingsProgressWidget(QWidget *parent = nullptr);
 
     void setValue(int value);
+
+    virtual QSize sizeHint() const override;
 
 protected:
     virtual void paintEvent(QPaintEvent *event) override;

@@ -2,7 +2,7 @@
 #define TTKRADIUSPROGRESSWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,16 +20,20 @@
  ================================================= */
 
 #include <QProgressBar>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKRadiusProgressWidget : public QProgressBar
+class TTK_CORE_EXPORT TTKRadiusProgressWidget : public QProgressBar
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKRadiusProgressWidget)
 public:
     explicit TTKRadiusProgressWidget(QWidget *parent = nullptr);
+
+    virtual QSize sizeHint() const override;
 
 protected:
     virtual void paintEvent(QPaintEvent *event) override;

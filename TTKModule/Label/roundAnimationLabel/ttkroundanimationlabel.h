@@ -2,7 +2,7 @@
 #define TTKROUNDANIMATIONLABEL_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -21,20 +21,24 @@
 
 #include <QTimer>
 #include <QWidget>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 /*!
 * @author Greedysky <greedysky@163.com>
 */
-class TTK_EXTRAS_EXPORT TTKRoundAnimationLabel : public QWidget
+class TTK_CORE_EXPORT TTKRoundAnimationLabel : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKRoundAnimationLabel)
 public:
     explicit TTKRoundAnimationLabel(QWidget *parent = nullptr);
-    ~TTKRoundAnimationLabel();
+    virtual ~TTKRoundAnimationLabel();
 
     void setPixmap(const QPixmap &pix);
     void setInterval(int value);
+
+    virtual QSize sizeHint() const override;
 
 public Q_SLOTS:
     void start();

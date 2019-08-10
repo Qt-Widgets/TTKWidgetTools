@@ -2,7 +2,7 @@
 #define TTKCHECKABLE_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -32,14 +32,14 @@ class TTKCheckable;
  * @author Greedysky <greedysky@163.com>
  *   Heikki Johannes <hildenjohannes@gmail.com>
  */
-class TTK_EXTRAS_EXPORT TTKCheckableIcon : public QWidget
+class TTK_CORE_EXPORT TTKCheckableIcon : public QWidget
 {
     Q_OBJECT
     Q_PROPERTY(QColor color READ color WRITE setColor)
     Q_PROPERTY(qreal iconSize READ iconSize WRITE setIconSize)
     Q_PROPERTY(qreal opacity READ opacity WRITE setOpacity)
 public:
-    explicit TTKCheckableIcon(const QIcon &icon, TTKCheckable *parent = 0);
+    explicit TTKCheckableIcon(const QIcon &icon, TTKCheckable *parent = nullptr);
 
     virtual QSize sizeHint() const override;
 
@@ -69,7 +69,7 @@ protected:
  * @author Greedysky <greedysky@163.com>
  *   Heikki Johannes <hildenjohannes@gmail.com>
  */
-class TTK_EXTRAS_EXPORT TTKCheckable : public QAbstractButton
+class TTK_CORE_EXPORT TTKCheckable : public QAbstractButton
 {
     Q_OBJECT
 public:

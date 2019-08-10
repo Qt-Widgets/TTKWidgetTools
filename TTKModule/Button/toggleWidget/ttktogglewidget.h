@@ -2,7 +2,7 @@
 #define TTKTOGGLEWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
  ================================================= */
 
 #include <QAbstractButton>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 class QState;
@@ -30,13 +31,13 @@ class TTKToggleWidget;
  * @author Greedysky <greedysky@163.com>
  *   Heikki Johannes <hildenjohannes@gmail.com>
  */
-class TTK_EXTRAS_EXPORT TTKToggleThumb : public QWidget
+class TTK_CORE_EXPORT TTKToggleThumb : public QWidget
 {
     Q_OBJECT
     Q_PROPERTY(qreal shift WRITE setShift READ shift)
     Q_PROPERTY(QColor thumbColor WRITE setThumbColor READ thumbColor)
 public:
-    explicit TTKToggleThumb(TTKToggleWidget *parent = 0);
+    explicit TTKToggleThumb(TTKToggleWidget *parent = nullptr);
 
     void setShift(qreal shift);
 
@@ -63,12 +64,12 @@ protected:
  * @author Greedysky <greedysky@163.com>
  *   Heikki Johannes <hildenjohannes@gmail.com>
  */
-class TTK_EXTRAS_EXPORT TTKToggleTrack : public QWidget
+class TTK_CORE_EXPORT TTKToggleTrack : public QWidget
 {
     Q_OBJECT
     Q_PROPERTY(QColor trackColor WRITE setTrackColor READ trackColor)
 public:
-    explicit TTKToggleTrack(TTKToggleWidget *parent = 0);
+    explicit TTKToggleTrack(TTKToggleWidget *parent = nullptr);
 
     void setTrackColor(const QColor &color);
     inline QColor trackColor() const { return m_trackColor; }
@@ -87,12 +88,13 @@ protected:
  * @author Greedysky <greedysky@163.com>
  *   Heikki Johannes <hildenjohannes@gmail.com>
  */
-class TTK_EXTRAS_EXPORT TTKToggleWidget : public QAbstractButton
+class TTK_CORE_EXPORT TTKToggleWidget : public QAbstractButton
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKToggleWidget)
 public:
     explicit TTKToggleWidget(QWidget *parent = nullptr);
-    ~TTKToggleWidget();
+    virtual ~TTKToggleWidget();
 
     void setDisabledColor(const QColor &color);
     QColor disabledColor() const;

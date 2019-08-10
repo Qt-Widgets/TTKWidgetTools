@@ -2,7 +2,7 @@
 #define TTKFUNCTIONTOOLBOXWIDGET_H
 
 /* =================================================
- * This file is part of the TTK WidgetTools project
+ * This file is part of the TTK Widget Tools project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -21,17 +21,19 @@
 
 #include <QLabel>
 #include <QBoxLayout>
+#include "ttkglobal.h"
 #include "ttkglobaldefine.h"
 
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKFunctionToolBoxTopWidget : public QWidget
+class TTK_CORE_EXPORT TTKFunctionToolBoxTopWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKFunctionToolBoxTopWidget)
 public:
     explicit TTKFunctionToolBoxTopWidget(int index, const QString &text, QWidget *parent = nullptr);
-    ~TTKFunctionToolBoxTopWidget();
+    virtual ~TTKFunctionToolBoxTopWidget();
 
     inline void setItemIndex(int index) { m_index = index; }
     inline int getItemIndex() const { return m_index; }
@@ -44,26 +46,16 @@ public:
 
 Q_SIGNALS:
     void mousePressAt(int index);
-    void swapDragItemIndex(int before, int after);
 
 protected:
     bool isItemEnable() const;
 
-    virtual void dragLeaveEvent(QDragLeaveEvent *event) override;
-    virtual void dragMoveEvent(QDragMoveEvent *event) override;
-    virtual void dragEnterEvent(QDragEnterEvent *event) override;
-    virtual void dropEvent(QDropEvent *event) override;
     virtual void mousePressEvent(QMouseEvent *event) override;
-    virtual void mouseMoveEvent(QMouseEvent *event) override;
     virtual void paintEvent(QPaintEvent *event) override;
 
     int m_index;
     QString m_suffixString;
     QLabel *m_labelIcon, *m_labelText;
-
-    bool m_isDrawTopState, m_isDrawMoveState;
-    bool m_isBlockMoveExpand;
-    QPoint m_pressPosAt;
 
 };
 
@@ -72,12 +64,13 @@ protected:
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKFunctionToolBoxWidgetItem : public QWidget
+class TTK_CORE_EXPORT TTKFunctionToolBoxWidgetItem : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKFunctionToolBoxWidgetItem)
 public:
     explicit TTKFunctionToolBoxWidgetItem(int index, const QString &text, QWidget *parent = nullptr);
-    ~TTKFunctionToolBoxWidgetItem();
+    virtual ~TTKFunctionToolBoxWidgetItem();
 
     QWidget *item(int index);
 
@@ -91,9 +84,6 @@ public:
     bool itemExpand() const;
 
     int count() const;
-
-Q_SIGNALS:
-    void swapDragItemIndex(int before, int after);
 
 protected:
     virtual void mousePressEvent(QMouseEvent *event) override;
@@ -111,7 +101,7 @@ class QScrollArea;
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct TTK_EXTRAS_EXPORT TTKFunctionToolBoxUnionItem
+typedef struct TTK_CORE_EXPORT TTKFunctionToolBoxUnionItem
 {
     int m_itemIndex;
     TTKFunctionToolBoxWidgetItem* m_widgetItem;
@@ -127,12 +117,13 @@ typedef struct TTK_EXTRAS_EXPORT TTKFunctionToolBoxUnionItem
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_EXTRAS_EXPORT TTKFunctionToolBoxWidget : public QWidget
+class TTK_CORE_EXPORT TTKFunctionToolBoxWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(TTKFunctionToolBoxWidget)
 public:
     explicit TTKFunctionToolBoxWidget(QWidget *parent = nullptr);
-    ~TTKFunctionToolBoxWidget();
+    virtual ~TTKFunctionToolBoxWidget();
 
     void addItem(QWidget *item, const QString &text);
     void removeItem(QWidget *item);
@@ -148,6 +139,11 @@ public:
 
     int count() const;
 
+    void setSingleExpand(bool single);
+    bool getSingleExpand() const;
+
+    virtual QSize sizeHint() const override;
+
 public Q_SLOTS:
     void setCurrentIndex(int index);
     void mousePressAt(int index);
@@ -159,6 +155,7 @@ protected:
 
     int foundMappingIndex(int index);
 
+    bool m_singleExpand;
     int m_currentIndex, m_itemIndexRaise;
     QVBoxLayout *m_layout;
     QScrollArea *m_scrollArea;

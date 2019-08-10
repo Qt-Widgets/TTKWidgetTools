@@ -10,6 +10,11 @@ TTKRadiusProgressWidget::TTKRadiusProgressWidget(QWidget *parent)
     setValue(0);
 }
 
+QSize TTKRadiusProgressWidget::sizeHint() const
+{
+    return QSize(150, 40);
+}
+
 void TTKRadiusProgressWidget::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
@@ -26,7 +31,7 @@ void TTKRadiusProgressWidget::paintEvent(QPaintEvent *event)
     painter.drawPixmap(rect, QPixmap(":/res/lb_rp_back"));
     painter.drawPixmap(fillRect, QPixmap(":/res/lb_rp_front"), fillRect);
 
-    painter.setFont(QFont("Microsoft YaHei", 15, QFont::Bold));
+    painter.setFont(QFont("Roboto", 15, QFont::Bold));
     painter.setPen(QColor("#555555"));
-    painter.drawText(textRect, Qt::AlignCenter, QString("%1%").arg(QString::number(value())));
+    painter.drawText(textRect, Qt::AlignCenter, QString("%1%").arg(value()));
 }
