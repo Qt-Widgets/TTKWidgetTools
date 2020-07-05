@@ -3,7 +3,7 @@
 
 /* =================================================
  * This file is part of the TTK Widget Tools project
- * Copyright (C) 2015 - 2019 Greedysky Studio
+ * Copyright (C) 2015 - 2020 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,5 +34,8 @@
 #include "antLineLabel/ttkantlinelabelproperty.h"
 #include "tileBackgroundLabel/ttktilebackgroundlabelproperty.h"
 #include "lightPointLabel/ttklightpointlabelproperty.h"
+#include "scanLabel/ttkscanlabelproperty.h"
+#include "crossLineLabel/ttkcrosslinelabelproperty.h"
+#include "netTrafficLabel/ttknettrafficlabelproperty.h"
 
 #endif // TTKLABELINCLUDE_H

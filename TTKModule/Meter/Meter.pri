@@ -1,6 +1,6 @@
 # =================================================
 # * This file is part of the TTK Widget Tools project
-# * Copyright (C) 2015 - 2019 Greedysky Studio
+# * Copyright (C) 2015 - 2020 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
@@ -30,3 +30,7 @@ include($$PWD/progressMeterWidget/ProgressMeterWidget.pri)
 include($$PWD/percentMeterWidget/PercentMeterWidget.pri)
 include($$PWD/arcMeterWidget/ArcMeterWidget.pri)
 include($$PWD/panelMeterWidget/PanelMeterWidget.pri)
+include($$PWD/miniMeterWidget/MiniMeterWidget.pri)
+include($$PWD/roundMeterWidget/RoundMeterWidget.pri)
+include($$PWD/clockMeterWidget/ClockMeterWidget.pri)
+include($$PWD/temperatureMeterWidget/TemperatureMeterWidget.pri)

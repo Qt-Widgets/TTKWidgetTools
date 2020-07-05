@@ -3,7 +3,7 @@
 
 /* =================================================
  * This file is part of the TTK Widget Tools project
- * Copyright (C) 2015 - 2019 Greedysky Studio
+ * Copyright (C) 2015 - 2020 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,11 @@ public:
     virtual ~TTKMarqueeLabelProperty();
 
 private Q_SLOTS:
+    virtual void boolPropertyChanged(QtProperty *property, bool value) override;
+    virtual void intPropertyChanged(QtProperty *property, int value) override;
     virtual void stringPropertyChanged(QtProperty *property, const QString &value) override;
+    virtual void enumPropertyChanged(QtProperty *property, int value) override;
+    virtual void colorPropertyChanged(QtProperty *property, const QColor &value) override;
 
 };
 

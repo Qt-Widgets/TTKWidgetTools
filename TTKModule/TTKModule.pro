@@ -1,6 +1,6 @@
 # =================================================
 # * This file is part of the TTK Widget Tools project
-# * Copyright (C) 2015 - 2019 Greedysky Studio
+# * Copyright (C) 2015 - 2020 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
@@ -19,10 +19,9 @@
 TEMPLATE = lib
 CONFIG += TTK_BUILD_LIB
 
-include(../TTKWidgetTools.pri)
+include($$PWD/../TTKWidgetTools.pri)
 
-win32:TARGET = ../../bin/TTKCore
-unix:TARGET = ../lib/TTKCore
+TARGET = TTKCore
 
 win32{
     RC_FILE = TTKCore.rc

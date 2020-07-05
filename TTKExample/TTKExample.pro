@@ -1,6 +1,6 @@
 # =================================================
 # * This file is part of the TTK Widget Tools project
-# * Copyright (C) 2015 - 2019 Greedysky Studio
+# * Copyright (C) 2015 - 2020 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
@@ -18,28 +18,25 @@
 
 TEMPLATE = app
 
+equals(QT_MAJOR_VERSION, 4){
+CONFIG   += gcc
+}
+
 contains(CONFIG, TTK_BUILD_LIB){
     CONFIG -= TTK_BUILD_LIB
 }
 
 CONFIG += TTK_NO_MSVC_LINK_NEED
-win32{
-    msvc{
-        CONFIG -= TTK_NO_MSVC_LINK_NEED
-    }
+win32:msvc{
+    CONFIG -= TTK_NO_MSVC_LINK_NEED
 }
-include(TTKExample.pri)
-include(../TTKWidgetTools.pri)
-include(../TTKQrc/TTKQrc.pri)
 
-win32{
-    TARGET = ../../bin/TTKWidgetTools
-    LIBS += -L../bin -lTTKCore
-}
-unix{
-    TARGET = ../lib/TTKWidgetTools
-    LIBS += -L../lib -lTTKCore
-}
+include($$PWD/TTKExample.pri)
+include($$PWD/../TTKWidgetTools.pri)
+include($$PWD/../TTKQrc/TTKQrc.pri)
+
+TARGET = TTKWidgetTools
+LIBS += -L$$DESTDIR -lTTKCore
 
 INCLUDEPATH += $$PWD
 
@@ -59,7 +56,7 @@ HEADERS += \
     $$PWD/ttkbackgroundcontainer.h \
     $$PWD/ttkbackgroundwidget.h \
     $$PWD/ttktoolsapplication.h \
-    ../ttkglobaldefine.h
+    $$PWD/../ttkglobaldefine.h
 
 FORMS   += $$PWD/ttktoolsapplication.ui
 

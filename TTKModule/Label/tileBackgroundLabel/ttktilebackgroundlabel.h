@@ -3,7 +3,7 @@
 
 /* =================================================
  * This file is part of the TTK Widget Tools project
- * Copyright (C) 2015 - 2019 Greedysky Studio
+ * Copyright (C) 2015 - 2020 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ class TTK_CORE_EXPORT TTKTileBackgroundLabel : public QWidget
     Q_OBJECT
     TTK_DECLARE_MODULE(TTKTileBackgroundLabel)
 public:
-    explicit TTKTileBackgroundLabel(QWidget *parent = 0);
+    explicit TTKTileBackgroundLabel(QWidget *parent = nullptr);
     ~TTKTileBackgroundLabel();
 
     void setForeColor(const QColor &color);

@@ -3,7 +3,7 @@
 
 /* =================================================
  * This file is part of the TTK Widget Tools project
- * Copyright (C) 2015 - 2019 Greedysky Studio
+ * Copyright (C) 2015 - 2020 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,6 +51,11 @@ public:
 
     virtual QSize sizeHint() const override;
 
+protected:
+    void paintDot(QPainter &painter);
+    virtual void paintEvent(QPaintEvent *event) override;
+    virtual void resizeEvent(QResizeEvent *event) override;
+
 private:
     int m_index, m_count;
     QColor m_dotColor;
@@ -62,10 +67,6 @@ private:
     QList<float> m_ranges;
     QList<Position> m_dots;
 
-protected:
-    void paintDot(QPainter &painter);
-    virtual void paintEvent(QPaintEvent *event) override;
-    virtual void resizeEvent(QResizeEvent *event) override;
 
 };
 
